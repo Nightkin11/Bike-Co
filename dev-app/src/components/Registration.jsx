@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const StyledWrapper = styled.div`
 	display: flex;
-	gap: 1rem;
+	gap: 0.4rem;
 `
 
 const Registration = () => {

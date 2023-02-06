@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 
+
 const StyledInput = styled.input`
  	 background-color: #FFFFFF;
     border: 1px solid gray;

@@ -7,8 +7,11 @@ const StyledBlock = styled.div`
 	border: 1px gray solid;
 	box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.1);
 	padding: 1rem;
+	display: flex;
+	justify-content: center;
+	flex-direction: ${props => props.direction || 'row'};
 	@media (max-width: 640px) {
-		width: ${props => props.mobilewidth || 'auto'}
+		width: ${props => props.mobilewidth || 'auto'};
 	}
 `
 

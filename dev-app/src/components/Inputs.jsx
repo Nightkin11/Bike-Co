@@ -1,43 +1,55 @@
 import React from 'react'
 import styled from 'styled-components'
+import Select from 'react-select'
+
+
 
 const StyledFormItem = styled.div`
 	position: relative;
 	margin: 2rem 0;
-
-	& input {
+`
+const StyledInput = styled.input`
 		display: block;
 		width: 280px;
 		height: 40px;
 		background: #fff;
 		border: solid 1px #ccc;
 		transition: all .8s ease;
-		padding: 0 15px;
+		padding: 0 0.6rem;
+	:focus {
+		border-color: rgba(0, 128, 0, 0.8);
+		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(0, 128, 0, 0.6);
+		outline: 0 none;
 	}
+	:focus + label {
+		color: green;
+	}
+`
 
-	& select {
-		display: block;
+const StyledSelector = styled(Select)`
+	.Select__control {
 		width: 280px;
 		height: 40px;
 		background: #fff;
 		border: solid 1px #ccc;
 		transition: all .8s ease;
-		padding: 0 15px;
+		border-radius: 0;
 	}
 
-	& input:focus {
+	.Select__control--is-focused {
 		border-color: rgba(0, 128, 0, 0.8);
 		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(0, 128, 0, 0.6);
 		outline: 0 none;
 	}
-
-	& select:focus {
-		border-color: rgba(0, 128, 0, 0.8);
-		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(0, 128, 0, 0.6);
-		outline: 0 none;
+	.Select__control:hover {
+		border-color: green;
+  }
+	.Select__control--is-focused + label {
+		color: green;
 	}
 
-	& label {
+`
+const Styledlabel = styled.label`
 		position: absolute;
 		cursor: text;
 		top: -26px;
@@ -47,21 +59,13 @@ const StyledFormItem = styled.div`
 		padding: 0 10px;
 		color: #999;
 		transition: all .8s ease;
-	}
-	& input:focus + label{
-	color: green;
-	}
-
-	& select:focus + label{
-		color: green;
-	}
 `
 
 const Input = (props) => {
 	return (
 		<StyledFormItem>
-			<input type={props.type} id={props.id} name={props.name} autocomplete={props.autocomplete} required={props.required} value={props.value} onChange={props.onChange} />
-			<label>{props.label}</label>
+			<StyledInput type={props.type} id={props.id} name={props.name} required={props.required} value={props.value} onChange={props.onChange} />
+			<Styledlabel>{props.label}</Styledlabel>
 		</StyledFormItem>
 	)
 }
@@ -69,10 +73,10 @@ const Input = (props) => {
 const Selector = (props) => {
 	return (
 		<StyledFormItem>
-			<select type={props.type} id={props.id} name={props.name} autocomplete={props.autocomplete} required={props.required} value={props.value} onChange={props.onChange} >
+			<StyledSelector classNamePrefix='Select' isClearable options={props.options} {...props} >
 				{props.children}
-			</select>
-			<label>{props.label}</label>
+			</StyledSelector>
+			<Styledlabel>{props.label}</Styledlabel>
 		</StyledFormItem>
 	)
 }
