@@ -6,6 +6,8 @@ import { useDispatch } from 'react-redux';
 import {removeCase} from '../store/caseSlice'
 import styled from 'styled-components'
 import Flex from './Flex';
+import { LIST_TITLES } from '../config';
+import {formatDate, formatDateTime} from '../utils'
 
 
 const StyledInformation = styled.div`
@@ -20,6 +22,20 @@ const StyledStatus = styled.div`
 	justify-content: center;
 `
 
+const StyledTitle = styled.span`
+	color: gray;
+`
+
+const StyledCreatedDate = styled.span`
+	color: gray;
+	font-size: 12px;
+	float: right;
+`
+
+const StyledParagraph = styled.p`
+	margin:	0.4rem;
+`
+
 const CaseItem = ({id, status, ownerFullName, licenseNumber, date, type, color, createdAt }) => {
 	const dispatch = useDispatch();
 	return (
@@ -32,12 +48,12 @@ const CaseItem = ({id, status, ownerFullName, licenseNumber, date, type, color, 
 				</Flex>
 			</Flex>
 			<StyledInformation>
-				<p>{ownerFullName}</p>
-				<p>{date}</p>
-				<p>{licenseNumber}</p>
-				<p>{type}</p>
-				<p>{color}</p>
-				<p>{createdAt}</p>
+				<StyledParagraph><StyledTitle>Owner name: </StyledTitle>{ownerFullName}</StyledParagraph>
+				<StyledParagraph><StyledTitle>Steal date: </StyledTitle>{formatDate(date)}</StyledParagraph>
+				<StyledParagraph><StyledTitle>Bike license number: </StyledTitle>{licenseNumber}</StyledParagraph>
+				<StyledParagraph><StyledTitle>Bike type: </StyledTitle>{LIST_TITLES[type]}</StyledParagraph>
+				<StyledParagraph><StyledTitle>Bike color: </StyledTitle>{color}</StyledParagraph>
+				<StyledParagraph><StyledCreatedDate>{formatDateTime(createdAt)}</StyledCreatedDate></StyledParagraph>
 			</StyledInformation>
 		</Block>
 	)

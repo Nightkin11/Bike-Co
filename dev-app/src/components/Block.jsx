@@ -10,6 +10,7 @@ const StyledBlock = styled.div`
 	display: flex;
 	justify-content: center;
 	flex-direction: ${props => props.direction || 'row'};
+	height: max-content;
 	@media (max-width: 640px) {
 		width: ${props => props.mobilewidth || 'auto'};
 	}

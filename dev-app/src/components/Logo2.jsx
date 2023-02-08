@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import { useWindowSize } from './utils.jsx'
+import { useWindowSize } from '../utils'
 
 const StyledLogo = styled.h1`
 	display: flex;

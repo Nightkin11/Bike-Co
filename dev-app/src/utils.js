@@ -3,10 +3,17 @@ import { useLayoutEffect, useState } from 'react';
 
 const formatDate = (stringDate) => {
 	const date = new Date(stringDate)
-	return date.toLocaleString('ru-RU')
+	return date.toLocaleDateString('ru-RU')
 }
 
 export { formatDate }
+
+const formatDateTime = (stringDate) => {
+	const date = new Date(stringDate)
+	return date.toLocaleString('ru-RU')
+}
+
+export { formatDateTime }
 
 
 function useWindowSize() {

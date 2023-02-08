@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Button from './Button'
-import { useWindowSize } from './utils.jsx'
+import { useWindowSize } from '../utils'
 import {FiLogIn, FiUserPlus} from 'react-icons/fi'
 import { Link } from "react-router-dom";
 

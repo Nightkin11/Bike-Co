@@ -5,15 +5,12 @@ import CaseItem from './CaseItem'
 
 
 const StyledGrid = styled.div`
-	width: 320px;
+	width: 100%;
 	height: 100%;
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 	grid-template-rows: auto;
 	grid-gap: 1vw;
-	@media (max-width: 768px) {
-		width: 100%
-	}
 `
 
 const ActualCases = () => {

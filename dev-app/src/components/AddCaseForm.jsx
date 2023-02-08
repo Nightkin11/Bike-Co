@@ -54,11 +54,11 @@ const AddCaseForm = (props) => {
 	]
 	return (
 		<StyledForm onSubmit={handleSubmit}>
-			<Input id='licenseNumber' name='licenseNumber' type='text' label='License number' value={values.licenseNumber} onChange={handleChange} required='required' />
+			<Input id='licenseNumber' name='licenseNumber' type='text' label="Bike license number" value={values.licenseNumber} onChange={handleChange} required='required' />
 			<Input id='ownerFullName' name='ownerFullName' type='text' label='Full name' value={values.ownerFullName} onChange={handleChange} required='required' />
-			<Selector id='type' name='type' type='text' options={selectOptions} label="Bike's type" onChange={handleChangeSelect} required='required' />
-			<Input id='color' name='color' type='text' label="Bike's color" value={values.color} onChange={handleChange} required='required' />
-			<Input id='date' name='date' type='date' label="Date of steal" value={values.date} onChange={handleChange} required='required' />
+			<Selector id='type' name='type' type='text' options={selectOptions} label="Bike type" onChange={handleChangeSelect} required='required' />
+			<Input id='color' name='color' type='text' label="Bike color" value={values.color} onChange={handleChange} required='required' />
+			<Input id='date' name='date' type='date' label="Steal date" value={values.date} onChange={handleChange} required='required' />
 			<Input id='description' name='description' type='text' label="Description" value={values.description} onChange={handleChange} />
 			<Button type='submit'>Submit</Button>
 		</StyledForm>
