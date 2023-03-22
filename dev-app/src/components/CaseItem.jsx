@@ -8,6 +8,7 @@ import styled from 'styled-components'
 import Flex from './Flex';
 import { LIST_TITLES } from '../config';
 import {formatDate, formatDateTime} from '../utils'
+import { Link } from 'react-router-dom';
 
 
 const StyledInformation = styled.div`
@@ -43,7 +44,7 @@ const CaseItem = ({id, status, ownerFullName, licenseNumber, date, type, color, 
 			<Flex justify='space-between'>
 				<StyledStatus>{status}</StyledStatus>
 				<Flex gap='0.4rem'>
-					<Button width='42px' mobilewidth='48px' onClick={() => dispatch(removeCase({id}))}><RiEditLine /></Button>
+					<Link to={`cases/${id}`}><Button width='42px' mobilewidth='48px'><RiEditLine /></Button></Link>
 					<Button width='42px' mobilewidth='48px' onClick={() => dispatch(removeCase({id}))}><RiDeleteBinLine /></Button>
 				</Flex>
 			</Flex>

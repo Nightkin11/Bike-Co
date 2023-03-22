@@ -90,10 +90,10 @@ const Navbar = () => {
 		<StyledWrapper>
 			<StyledUl active={isOpen ? '0' : '-100%'}>
 				<StyledLi>
-					<StyledNavLink to='/' end onClick={() => setOpen(!isOpen)}>Home</StyledNavLink>
+					<StyledNavLink to='/' end onClick={() => setOpen(!isOpen)}>Cases</StyledNavLink>
 				</StyledLi>
 				<StyledLi>
-					<StyledNavLink to='blog' onClick={() => setOpen(!isOpen)}>Blog</StyledNavLink>
+					<StyledNavLink to='officers' onClick={() => setOpen(!isOpen)}>Officers</StyledNavLink>
 				</StyledLi>
 				<StyledLi>
 					<StyledNavLink to='about' onClick={() => setOpen(!isOpen)}>About</StyledNavLink>
