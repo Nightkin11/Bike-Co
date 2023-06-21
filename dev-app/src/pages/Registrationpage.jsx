@@ -4,6 +4,9 @@ import styled from 'styled-components'
 import Block from '../components/Block'
 import Button from '../components/Button'
 import {Input} from '../components/Inputs'
+import {useDispatch} from 'react-redux'
+import { addOfficer } from '../store/officerSlice'
+import { useNavigate } from 'react-router-dom'
 
 const StyledWrapper = styled.div`
 	display: flex;
@@ -23,8 +26,11 @@ const Registrationpage = () => {
 		lastName: '',
 		password: '',
 		clientId:'',
-		approved:'',
+		approved: false,
 	})
+	const dispatch = useDispatch();
+	const navigate = useNavigate()
+
 
 	const handleChange = (e) => {
 		const fieldName = e.target.name
@@ -33,6 +39,8 @@ const Registrationpage = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
+		dispatch(addOfficer(values))
+		navigate('/')
 	}
 
 	return (

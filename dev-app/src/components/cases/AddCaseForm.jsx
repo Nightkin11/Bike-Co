@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import {useDispatch} from 'react-redux'
 import { useState } from 'react'
-import { Selector, Input } from './Inputs'
-import Button from './Button'
-import { addCase } from '../store/caseSlice'
+import { Selector, Input } from '../Inputs'
+import Button from '../Button'
+import { addCase } from '../../store/caseSlice'
 
 const StyledForm = styled.form`
 	margin-top: 1rem;
@@ -23,7 +23,6 @@ const AddCaseForm = (props) => {
 		description:'',
 	})
 	const dispatch = useDispatch();
-	const addTask = () => dispatch(addCase(values))
 
 	const handleChange = (e) => {
 		const fieldName = e.target.name
@@ -37,7 +36,7 @@ const AddCaseForm = (props) => {
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		setOpen(false)
-		addTask()
+		dispatch(addCase(values))
 		setValues({
 			status: 'new',
 			licenseNumber: '',

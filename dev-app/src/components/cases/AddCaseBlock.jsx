@@ -1,9 +1,9 @@
 import React from 'react'
-import Block from './Block'
+import Block from '../Block'
 import AddCaseForm from './AddCaseForm'
-import Button from './Button'
+import Button from '../Button'
 import { useState } from 'react'
-import Flex from './Flex'
+import Flex from '../Flex'
 
 const AddCaseBlock = () => {
 	const [isOpen, setOpen] = useState(false)

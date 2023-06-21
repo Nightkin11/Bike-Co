@@ -10,6 +10,7 @@ import styled from 'styled-components';
 import Registrationpage from "./pages/Registrationpage";
 import Loginpage from "./pages/Loginpage";
 import Casedetailpage from "./pages/Casedetailpage";
+import Casespage from './pages/Casespage'
 
 
 const AppWrapper = styled.div`
@@ -25,13 +26,15 @@ const App = () => {
 		<Routes>
 			<Route path='/' element={<Layout />}>
 				<Route index element={<Homepage />} />
+				<Route path='cases' element={<Casespage />} />
+				<Route path='cases/:id' element={<Casedetailpage />} />
 				<Route path='officers' element={<Officerpage />} />
+				<Route path='officers/:id' element={<Casedetailpage />} /> {/* need to change */}
 				<Route path='about' element={<Aboutpage />} />
 				<Route path='contact' element={<Contactpage />} />
 				<Route path='signup' element={<Registrationpage />} />
 				<Route path='signin' element={<Loginpage />} />
 				<Route path='*' element={<Notfoundpage />} />
-				<Route path='cases/:id' element={<Casedetailpage />} />
 			</Route>
 		</Routes>
 	</AppWrapper>

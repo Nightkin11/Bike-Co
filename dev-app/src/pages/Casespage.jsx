@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import ActualOfficers from '../components/officers/ActualOfficers'
+import ActualCases from '../components/cases/ActualCases'
+import AddCaseBlock from '../components/cases/AddCaseBlock'
 
 const Container = styled.div`
 	display: flex;
@@ -12,12 +13,13 @@ const Container = styled.div`
 `
 
 
-const Officerpage = () => {
+const Casespage = () => {
 	return (
 		<Container>
-			<ActualOfficers />
+			<AddCaseBlock />
+			<ActualCases />
 		</Container>
 	)
 }
 
-export default Officerpage
+export default Casespage

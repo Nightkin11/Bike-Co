@@ -1,11 +1,25 @@
 const LIST_TYPES = {
 	GENERAL: 'general',
 	SPORT: 'sport',
+	NEW: 'new',
+	IN_PROGRESS: 'in_progress',
+	DONE: 'done',
+	APPROVED: 'approved'
 }
 
 const LIST_TITLES = {
 	[LIST_TYPES.GENERAL]: 'General bike',
 	[LIST_TYPES.SPORT]: 'Sport bike',
+	[LIST_TYPES.NEW]: 'New',
+	[LIST_TYPES.IN_PROGRESS]: 'In progress',
+	[LIST_TYPES.DONE]: 'Done',
 }
 
-export { LIST_TYPES, LIST_TITLES }
+const LIST_COLORS = {
+	[LIST_TYPES.NEW]: 'gray',
+	[LIST_TYPES.IN_PROGRESS]: 'orange',
+	[LIST_TYPES.DONE]: 'green',
+	[LIST_TYPES.APPROVED]: 'green',
+}
+
+export { LIST_TYPES, LIST_TITLES, LIST_COLORS }

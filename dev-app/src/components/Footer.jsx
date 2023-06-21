@@ -14,7 +14,7 @@ const Footer = () => {
 	<StyledFooter>
 		<Container padding='1rem 2rem'>
 			<Flex justify='center'>
-				Bike-Company 2022
+				Bike-Company 2023
 			</Flex>
 		</Container>
 	</StyledFooter>
