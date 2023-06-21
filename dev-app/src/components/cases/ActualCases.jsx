@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector} from 'react-redux'
 import styled from 'styled-components'
+import Block from '../Block'
 import CaseItem from './CaseItem'
 
 
@@ -17,11 +18,16 @@ const ActualCases = () => {
 	const cases = useSelector(state => state.cases.cases);
 	return (
 		<StyledGrid>
-			{cases.map((singleCase) => (
+			{cases.length === 0 ? <Block>
+				It's empty here 
+			</Block> :
+			cases.map((singleCase) => (
 				<CaseItem key={singleCase.id} {...singleCase} />
 			))}
 		</StyledGrid>
 	)
 }
+
+
 
 export default ActualCases

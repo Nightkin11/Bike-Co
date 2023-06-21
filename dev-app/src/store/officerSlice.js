@@ -19,17 +19,13 @@ const officerSlice = createSlice({
 			})
 		},
 		editOfficer(state, action){
-			// const editedCase = state.cases.find( singleCase => singleCase.id === action.payload.id )
-			// editedCase.status = action.payload.status;
-			// editedCase.licenseNumber = action.payload.licenseNumber;
-			// editedCase.type = action.payload.type;
-			// editedCase.ownerFullName = action.payload.ownerFullName;
-			// editedCase.updatedAt = new Date().toISOString();
-			// editedCase.color = action.payload.color;
-			// editedCase.date = action.payload.date;
-			// editedCase.officer = action.payload.officer;
-			// editedCase.description = action.payload.description;
-			// editedCase.resolution = action.payload.resolution;
+			const editedOfficer = state.officers.find( officer => officer.id === action.payload.id )
+			editedOfficer.email = action.payload.email;
+			editedOfficer.firstName = action.payload.firstName;
+			editedOfficer.lastName = action.payload.lastName;
+			editedOfficer.password = action.payload.password;
+			editedOfficer.clientId = action.payload.clientId;
+			editedOfficer.approved = action.payload.approved;
 		},
 
 		removeOfficer(state, action) {

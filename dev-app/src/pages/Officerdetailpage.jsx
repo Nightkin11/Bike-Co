@@ -5,8 +5,8 @@ import styled from 'styled-components'
 import { useState } from 'react'
 import Block from '../components/Block'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { editCase } from '../store/caseSlice'
 import {useDispatch} from 'react-redux'
+import { editOfficer } from '../store/officerSlice'
 
 
 const StyledWrapper = styled.div`
@@ -24,17 +24,16 @@ const Officerdetailpage = () => {
 	const location = useLocation()
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const { id, status, ownerFullName, licenseNumber, date, type, color, description, createdAt, updatedAt } = location.state
+	const { id, email, firstName, lastName, password, clientId, approved } = location.state
 
 	const [values, setValues] = useState({
 		id: id,
-		licenseNumber: licenseNumber,
-		ownerFullName: ownerFullName,
-		status: status,
-		type: type,
-		color: color,
-		date: date,
-		description: description,
+		email: email,
+		firstName: firstName,
+		lastName: lastName,
+		password: password,
+		clientId: clientId,
+		approved: approved,
 	})
 
 	const handleChange = (e) => {
@@ -42,24 +41,22 @@ const Officerdetailpage = () => {
 		setValues({...values, [fieldName]: e.target.value})
 	}
 
-
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		dispatch(editCase(values))
-		navigate('../cases')
+		dispatch(editOfficer(values))
+		navigate('../officers')
 	}
-
 
 
 	return (
 		<StyledWrapper>
 			<Block width='320px' mobilewidth='100%'>
 				<StyledForm onSubmit={handleSubmit}>
-					<Input id='licenseNumber' name='licenseNumber' type='text' label="Bike license number" value={values.licenseNumber} onChange={handleChange} required='required' />
-					<Input id='ownerFullName' name='ownerFullName' type='text' label='Full name' value={values.ownerFullName} onChange={handleChange} required='required' />
-					<Input id='color' name='color' type='text' label="Bike color" value={values.color} onChange={handleChange} required='required' />
-					<Input id='date' name='date' type='date' label="Steal date" value={values.date} onChange={handleChange} required='required' />
-					<Input id='description' name='description' type='text' label="Description" value={values.description} onChange={handleChange} />
+					<Input id='email' name='email' type='email' label="Email" value={values.email} onChange={handleChange} required='required' />
+					<Input id='firstName' name='firstName' type='text' label='First name' value={values.firstName} onChange={handleChange} required='required' />
+					<Input id='lastName' name='lastName' type='text' label="Last name" value={values.lastName} onChange={handleChange} required='required' />
+					<Input id='password' name='password' type='password' label="Password" value={values.password} onChange={handleChange} required='required' />
+					<Input id='clientId' name='clientId' type='text' label="Client ID" value={values.clientId} onChange={handleChange} />
 					<Button type='submit'>Submit</Button>
 				</StyledForm>
 			</Block>

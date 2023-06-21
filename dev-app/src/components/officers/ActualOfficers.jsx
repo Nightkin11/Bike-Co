@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector} from 'react-redux'
 import styled from 'styled-components'
 import OfficerItem from './OfficerItem'
+import Block from '../Block'
 
 
 const StyledGrid = styled.div`
@@ -17,7 +18,10 @@ const ActualOfficers = () => {
 	const officers = useSelector(state => state.officers.officers);
 	return (
 		<StyledGrid>
-			{officers.map((officer) => (
+			{officers.length === 0 ? <Block>
+				It's empty here 
+			</Block> :
+			officers.map((officer) => (
 				<OfficerItem key={officer.id} {...officer} />
 			))}
 		</StyledGrid>

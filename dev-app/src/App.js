@@ -11,6 +11,7 @@ import Registrationpage from "./pages/Registrationpage";
 import Loginpage from "./pages/Loginpage";
 import Casedetailpage from "./pages/Casedetailpage";
 import Casespage from './pages/Casespage'
+import Officerdetailpage from "./pages/Officerdetailpage"
 
 
 const AppWrapper = styled.div`
@@ -29,7 +30,7 @@ const App = () => {
 				<Route path='cases' element={<Casespage />} />
 				<Route path='cases/:id' element={<Casedetailpage />} />
 				<Route path='officers' element={<Officerpage />} />
-				<Route path='officers/:id' element={<Casedetailpage />} /> {/* need to change */}
+				<Route path='officers/:id' element={<Officerdetailpage />} /> {/* need to change */}
 				<Route path='about' element={<Aboutpage />} />
 				<Route path='contact' element={<Contactpage />} />
 				<Route path='signup' element={<Registrationpage />} />
