@@ -26,6 +26,26 @@ const StyledInput = styled.input`
 	}
 `
 
+const StyledCheckbox = styled.input`
+		display: block;
+		margin-left: auto;
+		margin-right: 0;
+		width: 20px;
+		height: 20px;
+		background: #fff;
+		border: solid 1px #ccc;
+		transition: all .8s ease;
+		padding: 0 0.6rem;
+	:focus {
+		border-color: rgba(0, 128, 0, 0.8);
+		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(0, 128, 0, 0.6);
+		outline: 0 none;
+	}
+	:focus + label {
+		color: green;
+	}
+`
+
 const StyledSelector = styled(Select)`
 	.Select__control {
 		width: 280px;
@@ -52,7 +72,7 @@ const StyledSelector = styled(Select)`
 const Styledlabel = styled.label`
 		position: absolute;
 		cursor: text;
-		top: -26px;
+		top: ${props => props.top || '-26px'};
 		left: -8px;
 		font-size: 18px;
 		background: transparent;
@@ -70,6 +90,15 @@ const Input = (props) => {
 	)
 }
 
+const Checkbox = (props) => {
+	return (
+		<StyledFormItem>
+			<StyledCheckbox type='checkbox' id={props.id} name={props.name} checked={props.checked} required={props.required} value={props.value} onChange={props.onChange} />
+			<Styledlabel top='0'>{props.label}</Styledlabel>
+		</StyledFormItem>
+	)
+}
+
 const Selector = (props) => {
 	return (
 		<StyledFormItem>
@@ -81,5 +110,5 @@ const Selector = (props) => {
 	)
 }
 
-export { Input, Selector }
+export { Input, Checkbox, Selector }
 

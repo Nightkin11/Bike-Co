@@ -4,7 +4,8 @@ const LIST_TYPES = {
 	NEW: 'new',
 	IN_PROGRESS: 'in_progress',
 	DONE: 'done',
-	APPROVED: 'approved'
+	APPROVED: true,
+	APPROVEDFALSE: false,
 }
 
 const LIST_TITLES = {
@@ -13,6 +14,8 @@ const LIST_TITLES = {
 	[LIST_TYPES.NEW]: 'New',
 	[LIST_TYPES.IN_PROGRESS]: 'In progress',
 	[LIST_TYPES.DONE]: 'Done',
+	[LIST_TYPES.APPROVED]: 'Approved',
+	[LIST_TYPES.APPROVEDFALSE]: 'Not Approved',
 }
 
 const LIST_COLORS = {

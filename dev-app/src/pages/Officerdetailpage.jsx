@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input } from '../components/Inputs'
+import { Input, Checkbox } from '../components/Inputs'
 import Button from '../components/Button'
 import styled from 'styled-components'
 import { useState } from 'react'
@@ -41,12 +41,15 @@ const Officerdetailpage = () => {
 		setValues({...values, [fieldName]: e.target.value})
 	}
 
+	const handleChangeCheckbox = (e) => {
+		setValues({...values, 'approved': !approved})
+	}
+
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		dispatch(editOfficer(values))
 		navigate('../officers')
 	}
-
 
 	return (
 		<StyledWrapper>
@@ -57,6 +60,7 @@ const Officerdetailpage = () => {
 					<Input id='lastName' name='lastName' type='text' label="Last name" value={values.lastName} onChange={handleChange} required='required' />
 					<Input id='password' name='password' type='password' label="Password" value={values.password} onChange={handleChange} required='required' />
 					<Input id='clientId' name='clientId' type='text' label="Client ID" value={values.clientId} onChange={handleChange} />
+					<Checkbox id='approved' name='approved' label="Approved" value={values.approved} checked={values.approved} onChange={handleChangeCheckbox} />
 					<Button type='submit'>Submit</Button>
 				</StyledForm>
 			</Block>

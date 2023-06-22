@@ -47,9 +47,9 @@ const OfficerItem = (officer) => {
 				<StyledParagraph><StyledTitle>Email: </StyledTitle>{email}</StyledParagraph>
 				<StyledParagraph><StyledTitle>First name: </StyledTitle>{firstName}</StyledParagraph>
 				<StyledParagraph><StyledTitle>Last name: </StyledTitle>{lastName}</StyledParagraph>
-				<StyledParagraph><StyledTitle>Password: </StyledTitle>{password}</StyledParagraph>
+				{/* <StyledParagraph><StyledTitle>Password: </StyledTitle>{password}</StyledParagraph> */}
 				<StyledParagraph><StyledTitle>Client ID: </StyledTitle>{clientId}</StyledParagraph>
-				<StyledParagraph><StyledTitle>Approved: </StyledTitle>{approved}</StyledParagraph>
+				{/* <StyledParagraph><StyledTitle>Approved: </StyledTitle>{approved}</StyledParagraph> */}
 			</StyledInformation>
 		</Block>
 	)
