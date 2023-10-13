@@ -42,7 +42,7 @@ const StyledButton = styled.button`
 }
 
 @media (max-width: 768px) {
-	width: ${props => props.mobilewidth || 'auto'};
+	/* width: ${props => props.mobilewidth || 'auto'}; */
 	height: 48px;
 }
 `

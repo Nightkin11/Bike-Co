@@ -4,7 +4,7 @@ import {useDispatch} from 'react-redux'
 import { useState } from 'react'
 import { Selector, Input } from '../Inputs'
 import Button from '../Button'
-import { addCase } from '../../store/caseSlice'
+import { addNewCase } from '../../store/caseSlice'
 
 const StyledForm = styled.form`
 	margin-top: 1rem;
@@ -36,7 +36,7 @@ const AddCaseForm = (props) => {
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		setOpen(false)
-		dispatch(addCase(values))
+		dispatch(addNewCase(values))
 		setValues({
 			status: 'new',
 			licenseNumber: '',

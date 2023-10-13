@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import ActualCases from '../components/cases/ActualCases'
-import AddCaseBlock from '../components/cases/AddCaseBlock'
 
 const Container = styled.div`
 	display: flex;
@@ -16,7 +15,6 @@ const Container = styled.div`
 const Casespage = () => {
 	return (
 		<Container>
-			<AddCaseBlock />
 			<ActualCases />
 		</Container>
 	)

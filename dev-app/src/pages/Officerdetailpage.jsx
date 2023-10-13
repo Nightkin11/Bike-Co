@@ -6,7 +6,7 @@ import { useState } from 'react'
 import Block from '../components/Block'
 import { useLocation, useNavigate } from 'react-router-dom'
 import {useDispatch} from 'react-redux'
-import { editOfficer } from '../store/officerSlice'
+import { toggleOfficer } from '../store/officerSlice'
 
 
 const StyledWrapper = styled.div`
@@ -24,14 +24,14 @@ const Officerdetailpage = () => {
 	const location = useLocation()
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const { id, email, firstName, lastName, password, clientId, approved } = location.state
+	const { _id, email, firstName, lastName, clientId, approved } = location.state
 
 	const [values, setValues] = useState({
-		id: id,
+		_id: _id,
 		email: email,
 		firstName: firstName,
 		lastName: lastName,
-		password: password,
+		password: '',
 		clientId: clientId,
 		approved: approved,
 	})
@@ -41,14 +41,23 @@ const Officerdetailpage = () => {
 		setValues({...values, [fieldName]: e.target.value})
 	}
 
+	const validatePasswordChange = (e) => {
+		if (values.password !== e.target.value) {
+			e.target.setCustomValidity('Passwords do not match')
+		} else {
+			e.target.setCustomValidity("");
+		}
+	};
+
 	const handleChangeCheckbox = (e) => {
 		setValues({...values, 'approved': !approved})
 	}
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		dispatch(editOfficer(values))
-		navigate('../officers')
+		dispatch(toggleOfficer(values))
+		.unwrap()
+		.then(navigate('../officers'))
 	}
 
 	return (
@@ -59,6 +68,7 @@ const Officerdetailpage = () => {
 					<Input id='firstName' name='firstName' type='text' label='First name' value={values.firstName} onChange={handleChange} required='required' />
 					<Input id='lastName' name='lastName' type='text' label="Last name" value={values.lastName} onChange={handleChange} required='required' />
 					<Input id='password' name='password' type='password' label="Password" value={values.password} onChange={handleChange} required='required' />
+					<Input id='confirm-password' name='confirm-password' type='password' label="Confirm Password" value={values.confirmPassword} onChange={validatePasswordChange} required='required' />
 					<Input id='clientId' name='clientId' type='text' label="Client ID" value={values.clientId} onChange={handleChange} />
 					<Checkbox id='approved' name='approved' label="Approved" value={values.approved} checked={values.approved} onChange={handleChangeCheckbox} />
 					<Button type='submit'>Submit</Button>

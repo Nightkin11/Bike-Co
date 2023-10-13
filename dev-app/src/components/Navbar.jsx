@@ -19,14 +19,14 @@ const StyledNavLink = styled(NavLink)`
 :after {
 	content: "";
 	position: absolute;
-  bottom: -4px;
-  left: 50%;
-  display: block;
-  background: none repeat scroll 0 0 transparent;
-  height: 2px;
-  width: 0;
-  background: orange;
-  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+	bottom: -4px;
+	left: 50%;
+	display: block;
+	background: none repeat scroll 0 0 transparent;
+	height: 2px;
+	width: 0;
+	background: orange;
+	transition: width 0.3s ease 0s, left 0.3s ease 0s;
 }
 :hover {
 	color: orange;

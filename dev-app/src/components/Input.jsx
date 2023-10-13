@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 
 const StyledInput = styled.input`
- 	 background-color: #FFFFFF;
+ 	background-color: #FFFFFF;
     border: 1px solid gray;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
     transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
@@ -18,7 +18,7 @@ const StyledInput = styled.input`
 	}
 `
 const StyledSelector = styled.select`
- 	 background-color: #FFFFFF;
+ 	background-color: #FFFFFF;
     border: 1px solid gray;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
     transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;

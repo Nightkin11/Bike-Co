@@ -3,6 +3,7 @@ import { useSelector} from 'react-redux'
 import styled from 'styled-components'
 import Block from '../Block'
 import CaseItem from './CaseItem'
+import AddCaseBlock from './AddCaseBlock'
 
 
 const StyledGrid = styled.div`
@@ -15,16 +16,24 @@ const StyledGrid = styled.div`
 `
 
 const ActualCases = () => {
-	const cases = useSelector(state => state.cases.cases);
+	const cases = useSelector(state => state.cases.data);
+	const { status, message } = useSelector(state => state.cases);
+	
 	return (
-		<StyledGrid>
-			{cases.length === 0 ? <Block>
-				It's empty here 
-			</Block> :
-			cases.map((singleCase) => (
-				<CaseItem key={singleCase.id} {...singleCase} />
-			))}
-		</StyledGrid>
+		<>
+			{status === 'OK' && <AddCaseBlock />}
+			<StyledGrid>
+				{status === 'loading' && <Block>Loading...</Block>}
+				{status === 'ERR' && <Block>{message}</Block>}
+				{status === 'logout' && <Block>You have been logout</Block>}
+				{status === 'OK' && cases.length === 0 ? <Block>
+					It's empty here
+				</Block> :
+				cases.map((singleCase) => (
+					<CaseItem key={singleCase._id} {...singleCase} />
+				))}
+			</StyledGrid>
+		</>
 	)
 }
 

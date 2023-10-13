@@ -12,7 +12,7 @@ const Container = styled.div`
 `
 
 
-const Officerpage = () => {
+const Officerspage = () => {
 	return (
 		<Container>
 			<ActualOfficers />
@@ -20,4 +20,4 @@ const Officerpage = () => {
 	)
 }
 
-export default Officerpage
+export default Officerspage

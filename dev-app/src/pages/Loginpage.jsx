@@ -4,12 +4,17 @@ import styled from 'styled-components'
 import Button from '../components/Button'
 import {Input} from '../components/Inputs'
 import Block from '../components/Block'
+import { logoutUser, signIn } from '../store/userSlice'
+import {useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import PopupAlert from '../components/Popup'
+
 
 const StyledWrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 70vh;
+	height: 80vh;
 `
 
 const StyledForm = styled.form`
@@ -17,18 +22,29 @@ const StyledForm = styled.form`
 `
 
 const Loginpage = () => {
+	const { status, message, errCode } = useSelector(state => state.users);
+
 	const [values, setValues] = useState({
 		email: '',
 		password: '',
 	})
-
+	
+	const dispatch = useDispatch();
+	const navigate = useNavigate()
+	
+	
+	
 	const handleChange = (e) => {
 		const fieldName = e.target.name
 		setValues({...values, [fieldName]: e.target.value})
 	}
-
+	
 	const handleSubmit = (e) => {
 		e.preventDefault()
+		dispatch(logoutUser())
+		dispatch(signIn(values))
+			.unwrap()
+			.then(() => navigate("/"))
 	}
 
 	return (
@@ -40,6 +56,8 @@ const Loginpage = () => {
 					<Button width='100px' type='submit'>Sign in</Button>
 				</StyledForm>
 			</Block>
+			<PopupAlert open={status === 'loading'}>Entering</PopupAlert>
+			<PopupAlert open={errCode && errCode !== 'AUTH'}>{message}</PopupAlert>
 		</StyledWrapper>
 	)
 }

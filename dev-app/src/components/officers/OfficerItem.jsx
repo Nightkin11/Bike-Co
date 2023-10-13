@@ -7,7 +7,7 @@ import styled from 'styled-components'
 import Flex from '../Flex';
 import { LIST_COLORS, LIST_TITLES } from '../../config';
 import { Link } from 'react-router-dom';
-import { removeOfficer } from '../../store/officerSlice';
+import { deleteOfficer } from '../../store/officerSlice';
 
 
 
@@ -32,15 +32,15 @@ const StyledParagraph = styled.p`
 `
 
 const OfficerItem = (officer) => {
-	const { id, approved, email, firstName, lastName, password, clientId, } = officer
+	const { _id, approved, email, firstName, lastName, password, clientId, } = officer
 	const dispatch = useDispatch();
 	return (
 		<Block direction='column'>
 			<Flex justify='space-between'>
 				<StyledStatus color={LIST_COLORS[approved]}>{LIST_TITLES[approved]}</StyledStatus>
 				<Flex gap='0.4rem'>
-					<Link to={`${id}`} state={{ id, approved, email, firstName, lastName, password, clientId, }}><Button width='42px' mobilewidth='48px'><RiEditLine /></Button></Link>
-					<Button width='42px' mobilewidth='48px' onClick={() => dispatch(removeOfficer({id}))}><RiDeleteBinLine /></Button>
+					<Link to={`${_id}`} state={{ _id, approved, email, firstName, lastName, password, clientId, }}><Button width='42px' mobilewidth='48px'><RiEditLine /></Button></Link>
+					<Button width='42px' mobilewidth='48px' onClick={() => dispatch(deleteOfficer(_id))}><RiDeleteBinLine /></Button>
 				</Flex>
 			</Flex>
 			<StyledInformation>

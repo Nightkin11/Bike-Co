@@ -6,7 +6,7 @@ import Select from 'react-select'
 
 const StyledFormItem = styled.div`
 	position: relative;
-	margin: 2rem 0;
+	margin: 1.8rem 0;
 `
 const StyledInput = styled.input`
 		display: block;

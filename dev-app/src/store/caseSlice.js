@@ -1,45 +1,153 @@
-import {createSlice} from '@reduxjs/toolkit'
-import uniqid from 'uniqid';
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
+
+export const fetchCases = createAsyncThunk(
+	'cases/fetchCases',
+	async function(_, {rejectWithValue}) {
+		// const token = getState().users.data.token
+		try {
+			const response = await fetch('https://sf-final-project-be.herokuapp.com/api/cases/', {
+				method: 'GET',
+				headers: {
+					'Content-type': 'application/json',
+					"Authorization": `Bearer ${localStorage.getItem('token')}`,
+				}
+			})
+			const data = await response.json()
+			
+			if (!response.ok) {
+				return rejectWithValue(data)
+			}
+			return data
+
+		} catch (error) {
+			return rejectWithValue(error.message)
+		}
+	}
+)
+
+export const deleteCase = createAsyncThunk(
+	'cases/deleteCase',
+	async function(_id, {rejectWithValue, dispatch}) {
+		try {
+			const response = await fetch(`https://sf-final-project-be.herokuapp.com/api/cases/${_id}`, {
+				method: 'DELETE',
+				headers: {
+					'Content-type': 'application/json',
+					"Authorization": `Bearer ${localStorage.getItem('token')}`,
+				},
+			})
+
+			const data = await response.json()
+			
+			if (!response.ok) {
+				return rejectWithValue(data)
+			}
+
+			dispatch(removeCase({_id}))
+			
+		} catch (error) {
+			return rejectWithValue(error.message)
+		}
+	}
+)
+
+export const toggleCase = createAsyncThunk(
+	'cases/toggleCase',
+	async function(values, {rejectWithValue, dispatch}) {
+		try {
+			const response = await fetch(`https://sf-final-project-be.herokuapp.com/api/cases/${values._id}`, {
+				method: 'PUT',
+				headers: {
+					'Content-type': 'application/json',
+					"Authorization": `Bearer ${localStorage.getItem('token')}`,
+				},
+				body: JSON.stringify({
+					status: values.status,
+					licenseNumber: values.licenseNumber,
+					type: values.type,
+					ownerFullName: values.ownerFullName,
+					updatedAt: new Date().toISOString(),
+					color: values.color,
+					date: values.date,
+					officer: values.officer,
+					description: values.description,
+					resolution: values.resolution,
+				})
+			}) 
+
+			const data = await response.json()
+
+			if (!response.ok) {
+				return rejectWithValue(data)
+			}
+
+			dispatch(editCase(values))
+
+		} catch (error) {
+			return rejectWithValue(error.message)
+		}
+	}
+)
+
+export const addNewCase = createAsyncThunk(
+	'cases/addNewCase',
+	async function(values, {rejectWithValue, dispatch}) {
+		try {
+			const singleCase = {
+				status: values.status,
+				licenseNumber: values.licenseNumber,
+				type: values.type,
+				ownerFullName: values.ownerFullName,
+				clientId: values.clientId,
+				createdAt: new Date().toISOString(),
+				color: values.color,
+				date: values.date,
+				officer: values.officer,
+				description: values.description,
+				resolution: values.resolution,
+			}
+
+			const response = await fetch('https://sf-final-project-be.herokuapp.com/api/cases/', {
+				method: 'POST',
+				headers: {
+					'Content-type': 'application/json',
+					"Authorization": `Bearer ${localStorage.getItem('token')}`,
+				},
+				body: JSON.stringify(singleCase)
+			})
+			
+			const data = await response.json()
+
+			if (!response.ok) {
+				return rejectWithValue(data)
+			}
+
+			dispatch(addCase(data.data))
+
+		} catch (error) {
+			return rejectWithValue(error.message)
+		}
+	}
+)
+
 
 const caseSlice = createSlice({
 	name: 'cases',
 	initialState: {
-		cases: [],
+		data: [],
+		status: null,
+		error: null,
 	},
 	reducers: {
 		addCase(state, action) {
-			state.cases.push({
-				id: uniqid(),
-				status: action.payload.status,
-				licenseNumber: action.payload.licenseNumber,
-				type: action.payload.type,
-				ownerFullName: action.payload.ownerFullName,
-				clientId: action.payload.clientId,
-				createdAt: new Date().toISOString(),
-				// updatedAt: new Date().toISOString(),
-				color: action.payload.color,
-				date: action.payload.date,
-				officer: action.payload.officer,
-				description: action.payload.description,
-				resolution: action.payload.resolution,
-			})
+			state.data.push(action.payload)
 		},
 		editCase(state, action){
-			// state.cases.map((singleCase) => (
-			// 	singleCase.id === action.payload.id
-			// 	? {...singleCase,
-			// 		status: action.payload.status,
-			// 		licenseNumber: action.payload.licenseNumber,
-			// 	}
-			// 	: singleCase
-			// ));
-			const editedCase = state.cases.find( singleCase => singleCase.id === action.payload.id )
+			const editedCase = state.data.find( editedCase => editedCase._id === action.payload._id )
 			editedCase.status = action.payload.status;
 			editedCase.licenseNumber = action.payload.licenseNumber;
 			editedCase.type = action.payload.type;
 			editedCase.ownerFullName = action.payload.ownerFullName;
-			// editedCase.clientId = action.payload.clientId;
-			// editedCase.createdAt = new Date().toISOString();
 			editedCase.updatedAt = new Date().toISOString();
 			editedCase.color = action.payload.color;
 			editedCase.date = action.payload.date;
@@ -47,13 +155,46 @@ const caseSlice = createSlice({
 			editedCase.description = action.payload.description;
 			editedCase.resolution = action.payload.resolution;
 		},
-
 		removeCase(state, action) {
-			state.cases = state.cases.filter(singleCase => singleCase.id !== action.payload.id)
+			state.data = state.data.filter(singleCase => singleCase._id !== action.payload._id)
 		},
-	}
+		clearCases(state) {
+			state.data = [];
+			state.status = 'logout'
+		},
+	},
+	extraReducers: {
+		[fetchCases.pending]: (state, action) => {
+			state.status = 'loading';
+			state.error = action.payload;
+		},
+		[fetchCases.fulfilled]: (state, action) => {
+			state.status = action.payload.status;
+			state.data = action.payload.data;
+		},
+		[fetchCases.rejected]: (state, action) => {
+			state.status = action.payload.status;
+			state.errCode = action.payload.errCode;
+			state.message = action.payload.message
+		},
+		[deleteCase.rejected]: (state, action) => {
+			state.status = action.payload.status;
+			state.errCode = action.payload.errCode;
+			state.message = action.payload.message
+		},
+		[toggleCase.rejected]: (state, action) => {
+			state.status = action.payload.status;
+			state.errCode = action.payload.errCode;
+			state.message = action.payload.message
+		},
+		[addNewCase.rejected]: (state, action) => {
+			state.status = action.payload.status;
+			state.errCode = action.payload.errCode;
+			state.message = action.payload.message
+		},
+	},
 })
 
-export const {addCase, removeCase, editCase} = caseSlice.actions;
+export const {addCase, removeCase, editCase, clearCases} = caseSlice.actions;
 
 export default caseSlice.reducer;

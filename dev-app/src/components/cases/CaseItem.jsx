@@ -3,7 +3,7 @@ import Block from '../Block'
 import Button from '../Button'
 import {RiDeleteBinLine, RiEditLine} from 'react-icons/ri'
 import { useDispatch } from 'react-redux';
-import {removeCase} from '../../store/caseSlice'
+import {deleteCase} from '../../store/caseSlice'
 import styled from 'styled-components'
 import Flex from '../Flex';
 import { LIST_COLORS, LIST_TITLES } from '../../config';
@@ -41,15 +41,15 @@ const StyledLittleParagraph = styled.p`
 `
 
 const CaseItem = (singleCase) => {
-	const { id, status, ownerFullName, licenseNumber, date, type, color, description, createdAt, updatedAt } = singleCase
+	const { _id, status, ownerFullName, licenseNumber, date, type, color, description, createdAt, updatedAt } = singleCase
 	const dispatch = useDispatch();
 	return (
 		<Block direction='column'>
 			<Flex justify='space-between'>
 				<StyledStatus color={LIST_COLORS[status]}>{LIST_TITLES[status]}</StyledStatus>
 				<Flex gap='0.4rem'>
-					<Link to={`${id}`} state={{ id, status, ownerFullName, licenseNumber, date, type, color, description, createdAt, updatedAt }}><Button width='42px' mobilewidth='48px'><RiEditLine /></Button></Link>
-					<Button width='42px' mobilewidth='48px' onClick={() => dispatch(removeCase({id}))}><RiDeleteBinLine /></Button>
+					<Link to={`${_id}`} state={{ _id, status, ownerFullName, licenseNumber, date, type, color, description, createdAt, updatedAt }}><Button width='42px' mobilewidth='48px'><RiEditLine /></Button></Link>
+					<Button width='42px' mobilewidth='48px' onClick={() => dispatch(deleteCase(_id))}><RiDeleteBinLine /></Button>
 				</Flex>
 			</Flex>
 			<StyledInformation>

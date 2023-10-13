@@ -3,6 +3,8 @@ import { useSelector} from 'react-redux'
 import styled from 'styled-components'
 import OfficerItem from './OfficerItem'
 import Block from '../Block'
+import AddOfficerBlock from './AddOfficerBlock'
+import PopupAlert from '../Popup'
 
 
 const StyledGrid = styled.div`
@@ -15,16 +17,23 @@ const StyledGrid = styled.div`
 `
 
 const ActualOfficers = () => {
-	const officers = useSelector(state => state.officers.officers);
+	const officers = useSelector(state => state.officers.data);
+	const { status, errCode, message } = useSelector(state => state.officers);
 	return (
+		<>
+		{status === 'OK' || errCode === 'USER_EXISTS' || errCode === 'BAD_REQUEST' ? <AddOfficerBlock /> : ''}
+		<PopupAlert open={status === 'ERR'}>{message}</PopupAlert>
 		<StyledGrid>
-			{officers.length === 0 ? <Block>
+			{status === 'loading' && <Block>Loading...</Block>}
+			{status === 'logout' && <Block>You have been logout</Block>}
+			{status === 'OK' && officers.length === 0 ? <Block>
 				It's empty here 
 			</Block> :
 			officers.map((officer) => (
-				<OfficerItem key={officer.id} {...officer} />
+				<OfficerItem key={officer._id} {...officer} />
 			))}
 		</StyledGrid>
+		</>
 	)
 }
 

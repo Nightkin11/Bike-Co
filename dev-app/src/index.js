@@ -11,7 +11,7 @@ const Global = createGlobalStyle`
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: Roboto;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	font-size: 18px;
 }
 `
@@ -25,7 +25,7 @@ const theme = {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+//   <React.StrictMode>
 		<Provider store={store}>
 			<ThemeProvider theme={theme}>
 				<BrowserRouter>
@@ -34,5 +34,5 @@ root.render(
 				</BrowserRouter>
 			</ThemeProvider>
 		</Provider>
-  </React.StrictMode>
+//   </React.StrictMode>
 );

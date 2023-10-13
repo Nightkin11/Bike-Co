@@ -15,6 +15,12 @@ const formatDateTime = (stringDate) => {
 
 export { formatDateTime }
 
+const DateWithoutTime = (stringdate) => {
+  return stringdate.substring(0, 10)
+}
+
+export { DateWithoutTime }
+
 
 function useWindowSize() {
   const [size, setSize] = useState([0, 0]);

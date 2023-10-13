@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Block from '../components/Block'
+import { useSelector } from 'react-redux'
 
 
 const StyledWrapper = styled.div`
@@ -16,10 +17,11 @@ const StyledTitle = styled.h1`
 
 
 const Homepage = () => {
+	const {firstName} = useSelector(state => state.users.data.user);
 	return (
 		<StyledWrapper>
 			<Block width='320px' mobilewidth='100%'>
-				<StyledTitle>Welcome!</StyledTitle>
+				<StyledTitle>Welcome{firstName && `, ${firstName}`}!</StyledTitle>
 			</Block>
 		</StyledWrapper>
 	)
