@@ -30,9 +30,7 @@ const Loginpage = () => {
 	})
 	
 	const dispatch = useDispatch();
-	const navigate = useNavigate()
-	
-	
+	const navigate = useNavigate();
 	
 	const handleChange = (e) => {
 		const fieldName = e.target.name
@@ -44,7 +42,7 @@ const Loginpage = () => {
 		dispatch(logoutUser())
 		dispatch(signIn(values))
 			.unwrap()
-			.then(() => navigate("/"))
+			.then(() => navigate('/'))
 	}
 
 	return (

@@ -6,7 +6,7 @@ const StyledWrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 70vh;
+	height: 80vh;
 `
 
 const StyledTitle = styled.h1`

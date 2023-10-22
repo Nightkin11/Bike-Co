@@ -41,8 +41,8 @@ const StyledNavLink = styled(NavLink)`
 }
 &.active::after {
 	color: orange;
-  width: 100%; 
-  left: 0; 
+	width: 100%; 
+	left: 0; 
 }
 @media (max-width: 768px) {
 	font-size: 32px;

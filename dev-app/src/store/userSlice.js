@@ -90,6 +90,7 @@ export const signIn = createAsyncThunk(
 			dispatch(fetchAuth())
 			dispatch(fetchCases())
 			dispatch(fetchOfficers())
+			console.log(data)
 			dispatch(signInUser(data))
 
 		} catch (error) {
@@ -173,7 +174,7 @@ const userSlice = createSlice({
 			state.errCode = null;
 			state.message = null;
 		},
-		[signIn.fulfilled]: (state, action) => {
+		[signIn.fulfilled]: (state) => {
 			state.errCode = null;
 			state.message = null;
 		},

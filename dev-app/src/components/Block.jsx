@@ -5,7 +5,7 @@ const StyledBlock = styled.div`
 	width: ${props => props.width || 'auto'};
 	background-color: #FFF;
 	border: 1px gray solid;
-	box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
 	padding: 1rem;
 	display: flex;
 	justify-content: center;

@@ -16,6 +16,7 @@ import { useDispatch } from "react-redux";
 import { fetchCases } from "./store/caseSlice";
 import { fetchAuth } from "./store/userSlice";
 import { fetchOfficers } from "./store/officerSlice";
+import Profilepage from "./pages/Profilepage";
 
 
 const AppWrapper = styled.div`
@@ -46,6 +47,7 @@ const App = () => {
 					<Route path='contact' element={<Contactpage />} />
 					<Route path='signup' element={<Registrationpage />} />
 					<Route path='signin' element={<Loginpage />} />
+					<Route path='profile' element={<Profilepage />} />
 					<Route path='*' element={<Notfoundpage />} />
 				</Route>
 			</Routes>

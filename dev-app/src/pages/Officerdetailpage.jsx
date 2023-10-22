@@ -50,7 +50,7 @@ const Officerdetailpage = () => {
 	};
 
 	const handleChangeCheckbox = (e) => {
-		setValues({...values, 'approved': !approved})
+		setValues({...values, 'approved': !values.approved})
 	}
 
 	const handleSubmit = (e) => {
