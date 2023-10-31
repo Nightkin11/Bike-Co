@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import {useDispatch} from 'react-redux'
 import { useState } from 'react'
-import { Input } from '../Inputs'
-import Button from '../Button'
-import { addNewOfficer } from '../../store/officerSlice'
+import { Input } from '../../Inputs'
+import Button from '../../Button'
+import { addNewOfficer } from '../../../store/officerSlice'
 
 const StyledForm = styled.form`
 	margin-top: 1rem;

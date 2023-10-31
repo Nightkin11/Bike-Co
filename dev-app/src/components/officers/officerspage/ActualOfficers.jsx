@@ -2,9 +2,9 @@ import React from 'react'
 import { useSelector} from 'react-redux'
 import styled from 'styled-components'
 import OfficerItem from './OfficerItem'
-import Block from '../Block'
+import Block from '../../Block'
 import AddOfficerBlock from './AddOfficerBlock'
-import PopupAlert from '../Popup'
+import { PopupAlert } from '../../Popup'
 
 
 const StyledGrid = styled.div`

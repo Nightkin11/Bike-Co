@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Block from '../components/Block'
+import Block from '../../Block'
 import { useSelector } from 'react-redux'
 
 const StyledWrapper = styled.div`

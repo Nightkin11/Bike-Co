@@ -98,7 +98,6 @@ export const addNewCase = createAsyncThunk(
 				licenseNumber: values.licenseNumber,
 				type: values.type,
 				ownerFullName: values.ownerFullName,
-				clientId: values.clientId,
 				createdAt: new Date().toISOString(),
 				color: values.color,
 				date: values.date,
@@ -112,6 +111,45 @@ export const addNewCase = createAsyncThunk(
 				headers: {
 					'Content-type': 'application/json',
 					"Authorization": `Bearer ${localStorage.getItem('token')}`,
+				},
+				body: JSON.stringify(singleCase)
+			})
+			
+			const data = await response.json()
+
+			if (!response.ok) {
+				return rejectWithValue(data)
+			}
+
+			dispatch(addCase(data.data))
+
+		} catch (error) {
+			return rejectWithValue(error.message)
+		}
+	}
+)
+
+export const addNewCasePublic = createAsyncThunk(
+	'cases/addNewCasePublic',
+	async function(values, {rejectWithValue, dispatch}) {
+		try {
+			const singleCase = {
+				status: values.status,
+				licenseNumber: values.licenseNumber,
+				type: values.type,
+				ownerFullName: values.ownerFullName,
+				createdAt: new Date().toISOString(),
+				color: values.color,
+				date: values.date,
+				description: values.description,
+				resolution: values.resolution,
+				clientId: 'c77c6184-c783-4c20-acbc-563bf7384d1f',
+			}
+
+			const response = await fetch('https://sf-final-project-be.herokuapp.com/api/public/report', {
+				method: 'POST',
+				headers: {
+					'Content-type': 'application/json',
 				},
 				body: JSON.stringify(singleCase)
 			})

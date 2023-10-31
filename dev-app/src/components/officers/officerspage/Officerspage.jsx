@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import ActualOfficers from '../components/officers/ActualOfficers'
+import ActualOfficers from './ActualOfficers'
 
 const Container = styled.div`
 	display: flex;

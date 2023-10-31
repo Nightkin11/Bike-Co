@@ -1,12 +1,12 @@
 import React from 'react'
-import { Input, Checkbox } from '../components/Inputs'
-import Button from '../components/Button'
+import { Input, Checkbox } from '../../Inputs'
+import Button from '../../Button'
 import styled from 'styled-components'
 import { useState } from 'react'
-import Block from '../components/Block'
+import Block from '../../Block'
 import { useLocation, useNavigate } from 'react-router-dom'
 import {useDispatch} from 'react-redux'
-import { toggleOfficer } from '../store/officerSlice'
+import { toggleOfficer } from '../../../store/officerSlice'
 
 
 const StyledWrapper = styled.div`

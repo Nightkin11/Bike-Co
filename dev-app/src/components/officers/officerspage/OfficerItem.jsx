@@ -1,13 +1,13 @@
 import React from 'react'
-import Block from '../Block'
-import Button from '../Button'
+import Block from '../../Block'
+import Button from '../../Button'
 import {RiDeleteBinLine, RiEditLine} from 'react-icons/ri'
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components'
-import Flex from '../Flex';
-import { LIST_COLORS, LIST_TITLES } from '../../config';
+import Flex from '../../Flex';
+import { LIST_COLORS, LIST_TITLES } from '../../../config';
 import { Link } from 'react-router-dom';
-import { deleteOfficer } from '../../store/officerSlice';
+import { deleteOfficer } from '../../../store/officerSlice';
 
 
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import Select from 'react-select'
 
@@ -81,7 +81,7 @@ const Styledlabel = styled.label`
 		transition: all .8s ease;
 `
 
-const Input = (props) => {
+export const Input = (props) => {
 	return (
 		<StyledFormItem>
 			<StyledInput type={props.type} id={props.id} name={props.name} required={props.required} value={props.value} onChange={props.onChange} />
@@ -90,7 +90,7 @@ const Input = (props) => {
 	)
 }
 
-const Checkbox = (props) => {
+export const Checkbox = (props) => {
 	return (
 		<StyledFormItem>
 			<StyledCheckbox type='checkbox' id={props.id} name={props.name} checked={props.checked} required={props.required} value={props.value} onChange={props.onChange} />
@@ -99,16 +99,13 @@ const Checkbox = (props) => {
 	)
 }
 
-const Selector = (props) => {
+export const Selector = forwardRef((props, ref) => {
 	return (
 		<StyledFormItem>
-			<StyledSelector classNamePrefix='Select' isClearable options={props.options} {...props} >
+			<StyledSelector classNamePrefix='Select' ref={ref} options={props.options} isClearable {...props} >
 				{props.children}
 			</StyledSelector>
 			<Styledlabel>{props.label}</Styledlabel>
 		</StyledFormItem>
 	)
-}
-
-export { Input, Checkbox, Selector }
-
+})

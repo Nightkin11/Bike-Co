@@ -90,7 +90,6 @@ export const signIn = createAsyncThunk(
 			dispatch(fetchAuth())
 			dispatch(fetchCases())
 			dispatch(fetchOfficers())
-			console.log(data)
 			dispatch(signInUser(data))
 
 		} catch (error) {

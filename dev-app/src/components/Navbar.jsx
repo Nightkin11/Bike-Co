@@ -93,13 +93,13 @@ const Navbar = () => {
 					<StyledNavLink to='/' end onClick={() => setOpen(!isOpen)}>Home</StyledNavLink>
 				</StyledLi>
 				<StyledLi>
+					<StyledNavLink to='report' onClick={() => setOpen(!isOpen)}>Report</StyledNavLink>
+				</StyledLi>
+				<StyledLi>
 					<StyledNavLink to='cases' onClick={() => setOpen(!isOpen)}>Cases</StyledNavLink>
 				</StyledLi>
 				<StyledLi>
 					<StyledNavLink to='officers' onClick={() => setOpen(!isOpen)}>Officers</StyledNavLink>
-				</StyledLi>
-				<StyledLi>
-					<StyledNavLink to='about' onClick={() => setOpen(!isOpen)}>About</StyledNavLink>
 				</StyledLi>
 				<StyledLi>
 					<StyledNavLink to='contact' onClick={() => setOpen(!isOpen)}>Contacts</StyledNavLink>

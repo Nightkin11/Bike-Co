@@ -1,22 +1,22 @@
 import React, { useEffect } from "react";
 import { Route, Routes } from 'react-router-dom';
-import Homepage from './pages/Homepage';
-import Officerspage from './pages/Officerspage'
-import Aboutpage from './pages/Aboutpage';
-import Contactpage from './pages/Contactpage'
-import Notfoundpage from './pages/Notfoundpage'
+import Homepage from './components/home/Homepage';
+import Officerspage from './components/officers/officerspage/Officerspage'
+import Reportpage from './components/cases/casereportpage/Reportpage';
+import Contactpage from './components/contacts/Contactpage'
+import Notfoundpage from './components/Notfoundpage'
 import Layout from './components/Layout';
 import styled from 'styled-components';
-import Registrationpage from "./pages/Registrationpage";
-import Loginpage from "./pages/Loginpage";
-import Casedetailpage from "./pages/Casedetailpage";
-import Casespage from './pages/Casespage'
-import Officerdetailpage from "./pages/Officerdetailpage"
+import Registrationpage from "./components/users/registrationpage/Registrationpage";
+import Loginpage from "./components/users/loginpage/Loginpage";
+import Casedetailpage from "./components/cases/casedetailpage/Casedetailpage";
+import Casespage from './components/cases/casespage/Casespage'
+import Officerdetailpage from "./components/officers/officerdetailpage/Officerdetailpage"
 import { useDispatch } from "react-redux";
 import { fetchCases } from "./store/caseSlice";
 import { fetchAuth } from "./store/userSlice";
 import { fetchOfficers } from "./store/officerSlice";
-import Profilepage from "./pages/Profilepage";
+import Profilepage from "./components/users/profilepage/Profilepage";
 
 
 const AppWrapper = styled.div`
@@ -27,11 +27,14 @@ min-height: 100vh;
 `
 
 const App = () => {
+	const token = localStorage.getItem('token')
 	const dispatch = useDispatch()
 	useEffect(() => {
-		dispatch(fetchAuth());
-		dispatch(fetchCases());
-		dispatch(fetchOfficers())
+		if (token) {
+			dispatch(fetchAuth());
+			dispatch(fetchCases());
+			dispatch(fetchOfficers())
+		}
 	}, [dispatch])
 
 	return (
@@ -43,7 +46,7 @@ const App = () => {
 					<Route path='cases/:id' element={<Casedetailpage />} />
 					<Route path='officers' element={<Officerspage />} />
 					<Route path='officers/:id' element={<Officerdetailpage />} />
-					<Route path='about' element={<Aboutpage />} />
+					<Route path='report' element={<Reportpage />} />
 					<Route path='contact' element={<Contactpage />} />
 					<Route path='signup' element={<Registrationpage />} />
 					<Route path='signin' element={<Loginpage />} />

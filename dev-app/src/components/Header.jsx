@@ -3,7 +3,7 @@ import Container from "./Container";
 import styled from "styled-components";
 import Logo2 from "./Logo2";
 import Navbar from "./Navbar";
-import Registration from "./Registration";
+import Registration from "./users/Registration";
 import Flex from './Flex'
 import { Link } from "react-router-dom";
 

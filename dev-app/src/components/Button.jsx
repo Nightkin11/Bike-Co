@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import React from 'react'
+import React, { forwardRef } from 'react'
 
 
 const StyledButton = styled.button`
@@ -7,7 +7,7 @@ const StyledButton = styled.button`
 	height: 42px;
   background: orange;
   border: none;
-  z-index: 1;
+  z-index: 0;
   padding: 0.4rem 0.4rem;
 	transition: all 0.3s ease;
   position: relative;
@@ -47,10 +47,10 @@ const StyledButton = styled.button`
 }
 `
 
-const Button = (props) => {
+const Button = forwardRef((props, ref) => {
 	return (
-		<StyledButton {...props}>{props.children}</StyledButton>
+		<StyledButton {...props} ref={ref}>{props.children}</StyledButton>
 	)
-}
+})
 
 export default Button

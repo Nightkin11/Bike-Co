@@ -1,9 +1,8 @@
 import React from 'react'
 import { useSelector} from 'react-redux'
 import styled from 'styled-components'
-import Block from '../Block'
+import Block from '../../Block'
 import CaseItem from './CaseItem'
-import AddCaseBlock from './AddCaseBlock'
 
 
 const StyledGrid = styled.div`
@@ -18,10 +17,11 @@ const StyledGrid = styled.div`
 const ActualCases = () => {
 	const cases = useSelector(state => state.cases.data);
 	const { status, message } = useSelector(state => state.cases);
+	const officers = useSelector(state => state.officers.data)
+	const token = localStorage.getItem('token')
 	
 	return (
 		<>
-			{status === 'OK' && <AddCaseBlock />}
 			<StyledGrid>
 				{status === 'loading' && <Block>Loading...</Block>}
 				{status === 'ERR' && <Block>{message}</Block>}
@@ -30,8 +30,9 @@ const ActualCases = () => {
 					It's empty here
 				</Block> :
 				cases.map((singleCase) => (
-					<CaseItem key={singleCase._id} {...singleCase} />
+					<CaseItem key={singleCase._id} {...singleCase} officers={officers} />
 				))}
+				{!token && status !== 'logout' && <Block>Please login for access</Block>}
 			</StyledGrid>
 		</>
 	)

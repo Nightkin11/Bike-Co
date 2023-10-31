@@ -1,8 +1,8 @@
 import React from 'react'
-import Block from '../Block'
-import Button from '../Button'
+import Block from '../../Block'
+import Button from '../../Button'
 import { useState } from 'react'
-import Flex from '../Flex'
+import Flex from '../../Flex'
 import AddOfficerForm from './AddOfficerForm'
 
 const AddOfficerBlock = () => {

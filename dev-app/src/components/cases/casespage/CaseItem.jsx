@@ -1,14 +1,15 @@
 import React from 'react'
-import Block from '../Block'
-import Button from '../Button'
+import Block from '../../Block'
+import Button from '../../Button'
 import {RiDeleteBinLine, RiEditLine} from 'react-icons/ri'
 import { useDispatch } from 'react-redux';
-import {deleteCase} from '../../store/caseSlice'
+import {deleteCase} from '../../../store/caseSlice'
 import styled from 'styled-components'
-import Flex from '../Flex';
-import { LIST_COLORS, LIST_TITLES } from '../../config';
-import { formatDateTime, formatDate } from '../../utils'
+import Flex from '../../Flex';
+import { LIST_COLORS, LIST_TITLES } from '../../../config';
+import { formatDateTime } from '../../../utils'
 import { Link } from 'react-router-dom';
+import { PopupConfirm } from '../../Popup';
 
 
 const StyledInformation = styled.div`
@@ -40,21 +41,22 @@ const StyledLittleParagraph = styled.p`
 	margin:	0.1rem;
 `
 
-const CaseItem = (singleCase) => {
-	const { _id, status, ownerFullName, licenseNumber, date, type, color, description, createdAt, updatedAt } = singleCase
+const CaseItem = (props) => {
+	const { _id, status, ownerFullName, licenseNumber, date, type, color, officer, description, createdAt, updatedAt, resolution, officers } = props
 	const dispatch = useDispatch();
+
 	return (
 		<Block direction='column'>
 			<Flex justify='space-between'>
 				<StyledStatus color={LIST_COLORS[status]}>{LIST_TITLES[status]}</StyledStatus>
 				<Flex gap='0.4rem'>
-					<Link to={`${_id}`} state={{ _id, status, ownerFullName, licenseNumber, date, type, color, description, createdAt, updatedAt }}><Button width='42px' mobilewidth='48px'><RiEditLine /></Button></Link>
-					<Button width='42px' mobilewidth='48px' onClick={() => dispatch(deleteCase(_id))}><RiDeleteBinLine /></Button>
+					<Link to={`${_id}`} state={{ _id, status, ownerFullName, licenseNumber, date, type, color, officer, description, createdAt, updatedAt, resolution, officers}}><Button width='42px' mobilewidth='48px'><RiEditLine /></Button></Link>
+					<PopupConfirm trigger={<Button width='42px' mobilewidth='48px'><RiDeleteBinLine /></Button>} onClick={() => dispatch(deleteCase(_id))}> the case</PopupConfirm>
 				</Flex>
 			</Flex>
 			<StyledInformation>
 				<StyledParagraph><StyledTitle>Owner name: </StyledTitle>{ownerFullName}</StyledParagraph>
-				<StyledParagraph><StyledTitle>Steal date: </StyledTitle>{formatDate(date)}</StyledParagraph>
+				<StyledParagraph><StyledTitle>Steal date: </StyledTitle>{formatDateTime(date)}</StyledParagraph>
 				<StyledParagraph><StyledTitle>Bike license number: </StyledTitle>{licenseNumber}</StyledParagraph>
 				<StyledParagraph><StyledTitle>Bike type: </StyledTitle>{LIST_TITLES[type]}</StyledParagraph>
 				<StyledParagraph><StyledTitle>Bike color: </StyledTitle>{color}</StyledParagraph>
