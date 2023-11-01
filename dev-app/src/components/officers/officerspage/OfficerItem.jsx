@@ -8,6 +8,7 @@ import Flex from '../../Flex';
 import { LIST_COLORS, LIST_TITLES } from '../../../config';
 import { Link } from 'react-router-dom';
 import { deleteOfficer } from '../../../store/officerSlice';
+import { PopupConfirm } from '../../Popup';
 
 
 
@@ -40,14 +41,13 @@ const OfficerItem = (officer) => {
 				<StyledStatus color={LIST_COLORS[approved]}>{LIST_TITLES[approved]}</StyledStatus>
 				<Flex gap='0.4rem'>
 					<Link to={`${_id}`} state={{ _id, approved, email, firstName, lastName, password, clientId, }}><Button width='42px' mobilewidth='48px'><RiEditLine /></Button></Link>
-					<Button width='42px' mobilewidth='48px' onClick={() => dispatch(deleteOfficer(_id))}><RiDeleteBinLine /></Button>
+					<PopupConfirm trigger={<Button width='42px' mobilewidth='48px'><RiDeleteBinLine /></Button>} onClick={() => dispatch(deleteOfficer(_id))}> the officer</PopupConfirm>
 				</Flex>
 			</Flex>
 			<StyledInformation>
 				<StyledParagraph><StyledTitle>Email: </StyledTitle>{email}</StyledParagraph>
 				<StyledParagraph><StyledTitle>First name: </StyledTitle>{firstName}</StyledParagraph>
 				<StyledParagraph><StyledTitle>Last name: </StyledTitle>{lastName}</StyledParagraph>
-				<StyledParagraph><StyledTitle>Client ID: </StyledTitle>{clientId}</StyledParagraph>
 			</StyledInformation>
 		</Block>
 	)

@@ -138,6 +138,7 @@ const officerSlice = createSlice({
 			editedOfficer.password = action.payload.password;
 			editedOfficer.clientId = action.payload.clientId;
 			editedOfficer.approved = action.payload.approved;
+			state.status = 'changed'
 		},
 
 		removeOfficer(state, action) {
@@ -166,6 +167,9 @@ const officerSlice = createSlice({
 			state.status = action.payload.status;
 			state.errCode = action.payload.errCode;
 			state.message = action.payload.message
+		},
+		[toggleOfficer.pending]: (state, action) => {
+			state.status = 'loading';
 		},
 		[toggleOfficer.rejected]: (state, action) => {
 			state.status = action.payload.status;

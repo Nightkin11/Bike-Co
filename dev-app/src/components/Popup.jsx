@@ -9,7 +9,6 @@ const StyledPopup = styled(Popup)`
 		background: rgba(0, 0, 0, 0.5);
 	}
 	&-content {
-		width: 280px;
 		background-color: #FFF;
 		border: 1px black solid;
 		box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.4);
@@ -39,6 +38,14 @@ export const PopupConfirm = (props) => {
 					</Flex>
 				</Flex>
 			)}
+		</StyledPopup>
+	)
+};
+
+export const PopupPassword = (props) => {
+	return(
+		<StyledPopup trigger={props.trigger} {...props} nested modal>
+			{props.children}
 		</StyledPopup>
 	)
 };

@@ -84,7 +84,7 @@ const Styledlabel = styled.label`
 export const Input = (props) => {
 	return (
 		<StyledFormItem>
-			<StyledInput type={props.type} id={props.id} name={props.name} required={props.required} value={props.value} onChange={props.onChange} />
+			<StyledInput type={props.type} id={props.id} name={props.name} required={props.required} value={props.value} onChange={props.onChange} disabled={props.disabled} />
 			<Styledlabel>{props.label}</Styledlabel>
 		</StyledFormItem>
 	)

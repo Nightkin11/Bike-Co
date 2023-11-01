@@ -94,15 +94,15 @@ const Casedetailpage = () => {
 		<StyledWrapper>
 			<Block width='320px' mobilewidth='100%' direction='column'>
 				<StyledForm id='form' onSubmit={handleSubmit}>
-					<Input id='licenseNumber' name='licenseNumber' type='text' label="Bike license number" value={values.licenseNumber || ''} onChange={handleChange} required='required' />
-					<Input id='ownerFullName' name='ownerFullName' type='text' label='Full name' value={values.ownerFullName || ''} onChange={handleChange} required='required' />
-					<Selector id='status' name='status' defaultValue={selectOptionsStatus[selectedStatus]} options={selectOptionsStatus} label="Status" onChange={handleChangeSelectStatus} required='required' />
-					{values.status === 'done' && <Input id='resolution' name='resolution' type='text' label="Resolution" value={values.resolution || ''} onChange={handleChange} required='required' />}
-					<Selector id='type' name='type' defaultValue={selectOptionsType[selectedType]} options={selectOptionsType} label="Bike type" onChange={handleChangeSelectType} required='required' />
-					<Input id='color' name='color' type='text' label="Bike color" value={values.color || ''} onChange={handleChange} required='required' />
-					<Input id='date' name='date' type='datetime-local' label="Steal date" value={DateWithTime(values.date) || ''} onChange={handleChange} required='required' />
+					<Input name='licenseNumber' type='text' label="Bike license number" value={values.licenseNumber || ''} onChange={handleChange} required='required' />
+					<Input name='ownerFullName' type='text' label='Full name' value={values.ownerFullName || ''} onChange={handleChange} required='required' />
+					<Selector name='status' defaultValue={selectOptionsStatus[selectedStatus]} options={selectOptionsStatus} label="Status" onChange={handleChangeSelectStatus} required='required' />
+					{values.status === 'done' && <Input name='resolution' type='text' label="Resolution" value={values.resolution || ''} onChange={handleChange} required='required' />}
+					<Selector name='type' defaultValue={selectOptionsType[selectedType]} options={selectOptionsType} label="Bike type" onChange={handleChangeSelectType} required='required' />
+					<Input name='color' type='text' label="Bike color" value={values.color || ''} onChange={handleChange} />
+					<Input name='date' type='datetime-local' label="Steal date" value={DateWithTime(values.date) || ''} onChange={handleChange} />
 					<Selector type='text' options={selectOfficers} label="Officer" defaultValue={selectOfficers[selectedOfficer]} onChange={handleChangeOfficer} />
-					<Input id='description' name='description' type='text' label="Description" value={values.description || ''} onChange={handleChange} />
+					<Input name='description' type='text' label="Description" value={values.description || ''} onChange={handleChange} />
 					<Flex direction='column' margin='0 0 1rem'>
 						<StyledParagraph><StyledCreatedDate>Created at {formatDateTime(createdAt)}</StyledCreatedDate></StyledParagraph>
 						{updatedAt && <StyledParagraph><StyledCreatedDate>Updated at {formatDateTime(updatedAt)}</StyledCreatedDate></StyledParagraph>}

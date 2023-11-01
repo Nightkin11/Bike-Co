@@ -5,7 +5,7 @@ import Block from '../../Block'
 import Button from '../../Button'
 import {Input} from '../../Inputs'
 import {useDispatch, useSelector} from 'react-redux'
-import { logoutUser, signUp } from '../../../store/userSlice'
+import { signUp } from '../../../store/userSlice'
 import { useNavigate } from 'react-router-dom'
 import { PopupAlert } from '../../Popup'
 
@@ -48,10 +48,9 @@ const Registrationpage = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		dispatch(logoutUser())
 		dispatch(signUp(values))
 		.unwrap()
-		.then(setInterval(() => {
+		.then(setTimeout(() => {
 			navigate('/')
 		}, 2000))
 	}

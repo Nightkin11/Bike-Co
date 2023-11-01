@@ -31,7 +31,6 @@ const Officerdetailpage = () => {
 		email: email,
 		firstName: firstName,
 		lastName: lastName,
-		password: '',
 		clientId: clientId,
 		approved: approved,
 	})
@@ -40,14 +39,6 @@ const Officerdetailpage = () => {
 		const fieldName = e.target.name
 		setValues({...values, [fieldName]: e.target.value})
 	}
-
-	const validatePasswordChange = (e) => {
-		if (values.password !== e.target.value) {
-			e.target.setCustomValidity('Passwords do not match')
-		} else {
-			e.target.setCustomValidity("");
-		}
-	};
 
 	const handleChangeCheckbox = (e) => {
 		setValues({...values, 'approved': !values.approved})
@@ -64,12 +55,10 @@ const Officerdetailpage = () => {
 		<StyledWrapper>
 			<Block width='320px' mobilewidth='100%'>
 				<StyledForm onSubmit={handleSubmit}>
-					<Input id='email' name='email' type='email' label="Email" value={values.email} onChange={handleChange} required='required' />
-					<Input id='firstName' name='firstName' type='text' label='First name' value={values.firstName} onChange={handleChange} required='required' />
-					<Input id='lastName' name='lastName' type='text' label="Last name" value={values.lastName} onChange={handleChange} required='required' />
-					<Input id='password' name='password' type='password' label="Password" value={values.password} onChange={handleChange} required='required' />
-					<Input id='confirm-password' name='confirm-password' type='password' label="Confirm Password" value={values.confirmPassword} onChange={validatePasswordChange} required='required' />
-					<Input id='clientId' name='clientId' type='text' label="Client ID" value={values.clientId} onChange={handleChange} />
+					<Input id='email' name='email' type='email' label="Email" value={values.email} onChange={handleChange} required='required' disabled />
+					<Input id='firstName' name='firstName' type='text' label='First name' value={values.firstName || ''} onChange={handleChange} />
+					<Input id='lastName' name='lastName' type='text' label="Last name" value={values.lastName || ''} onChange={handleChange} />
+					<Input id='clientId' name='clientId' type='text' label="Client ID" value={values.clientId} onChange={handleChange} disabled/>
 					<Checkbox id='approved' name='approved' label="Approved" value={values.approved} checked={values.approved} onChange={handleChangeCheckbox} />
 					<Button type='submit'>Submit</Button>
 				</StyledForm>

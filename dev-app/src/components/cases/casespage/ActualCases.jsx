@@ -3,6 +3,7 @@ import { useSelector} from 'react-redux'
 import styled from 'styled-components'
 import Block from '../../Block'
 import CaseItem from './CaseItem'
+import { PopupAlert } from '../../Popup'
 
 
 const StyledGrid = styled.div`
@@ -22,9 +23,9 @@ const ActualCases = () => {
 	
 	return (
 		<>
+			<PopupAlert open={status === 'ERR'}>{message}</PopupAlert>
 			<StyledGrid>
 				{status === 'loading' && <Block>Loading...</Block>}
-				{status === 'ERR' && <Block>{message}</Block>}
 				{status === 'logout' && <Block>You have been logout</Block>}
 				{status === 'OK' && cases.length === 0 ? <Block>
 					It's empty here

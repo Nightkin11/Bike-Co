@@ -47,7 +47,6 @@ export const signUp = createAsyncThunk(
 				},
 				body: JSON.stringify(user)
 			})
-			console.log(user)
 
 			const data = await response.json()
 
