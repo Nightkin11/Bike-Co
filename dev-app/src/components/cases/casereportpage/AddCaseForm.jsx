@@ -25,6 +25,7 @@ const AddCaseForm = () => {
 		date:'',
 		officer:'',
 		description:'',
+		clientId:'c77c6184-c783-4c20-acbc-563bf7384d1f',
 	})
 	const [isOpen, setIsOpen] = useState(false)
 	const dispatch = useDispatch();
@@ -64,6 +65,7 @@ const AddCaseForm = () => {
 			date:'',
 			officer: '',
 			description:'',
+			clientId:''
 		})
 		setTimeout(()=> {
 			setIsOpen(false)
@@ -87,6 +89,7 @@ const AddCaseForm = () => {
 			<Input name='date' type='datetime-local' label="Steal date" value={values.date} onChange={handleChange} />
 			{token && <Selector ref={selectRefOfficer} type='text' options={selectOfficers} label="Officer" onChange={handleChangeOfficer} />}
 			<Input name='description' type='text' label="Description" value={values.description} onChange={handleChange} />
+			{!token && <Input name='clientId' type='text' label="Client ID" value={values.clientId} onChange={handleChange} required='required' />}
 			<Button type='submit'>Submit</Button>
 			<PopupAlert open={isOpen}>The report is added</PopupAlert>
 		</StyledForm>

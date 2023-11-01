@@ -143,7 +143,7 @@ export const addNewCasePublic = createAsyncThunk(
 				date: values.date,
 				description: values.description,
 				resolution: values.resolution,
-				clientId: 'c77c6184-c783-4c20-acbc-563bf7384d1f',
+				clientId: values.clientId,
 			}
 
 			const response = await fetch('https://sf-final-project-be.herokuapp.com/api/public/report', {

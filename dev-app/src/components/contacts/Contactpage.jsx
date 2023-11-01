@@ -10,14 +10,19 @@ const StyledWrapper = styled.div`
 `
 
 const StyledTitle = styled.h1`
-	
+	color: orange;
+	text-align: center;
+`
+const StyledPar = styled.p`
+	text-align: center;
 `
 
 const Contactpage = () => {
 	return (
 		<StyledWrapper>
-			<Block width='320px' mobilewidth='100%'>
+			<Block width='320px' mobilewidth='100%' direction='column'>
 				<StyledTitle>Contacts</StyledTitle>
+				<StyledPar>m.efimov0112@gmail.com</StyledPar>
 			</Block>
 		</StyledWrapper>
 	)
