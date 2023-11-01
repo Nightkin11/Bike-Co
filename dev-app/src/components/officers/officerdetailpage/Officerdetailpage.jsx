@@ -6,7 +6,9 @@ import { useState } from 'react'
 import Block from '../../Block'
 import { useLocation, useNavigate } from 'react-router-dom'
 import {useDispatch} from 'react-redux'
-import { toggleOfficer } from '../../../store/officerSlice'
+import { deleteOfficer, toggleOfficer } from '../../../store/officerSlice'
+import { PopupConfirm } from '../../Popup'
+import Flex from '../../Flex'
 
 
 const StyledWrapper = styled.div`
@@ -53,15 +55,19 @@ const Officerdetailpage = () => {
 
 	return (
 		<StyledWrapper>
-			<Block width='320px' mobilewidth='100%'>
-				<StyledForm onSubmit={handleSubmit}>
-					<Input id='email' name='email' type='email' label="Email" value={values.email} onChange={handleChange} required='required' disabled />
-					<Input id='firstName' name='firstName' type='text' label='First name' value={values.firstName || ''} onChange={handleChange} />
-					<Input id='lastName' name='lastName' type='text' label="Last name" value={values.lastName || ''} onChange={handleChange} />
-					<Input id='clientId' name='clientId' type='text' label="Client ID" value={values.clientId} onChange={handleChange} disabled/>
-					<Checkbox id='approved' name='approved' label="Approved" value={values.approved} checked={values.approved} onChange={handleChangeCheckbox} />
-					<Button type='submit'>Submit</Button>
+			<Block width='320px' mobilewidth='100%' direction='column'>
+				<StyledForm id='form' onSubmit={handleSubmit}>
+					<Input name='email' type='email' label="Email" value={values.email} onChange={handleChange} required='required' disabled />
+					<Input name='firstName' type='text' label='First name' value={values.firstName || ''} onChange={handleChange} />
+					<Input name='lastName' type='text' label="Last name" value={values.lastName || ''} onChange={handleChange} />
+					<Input name='clientId' type='text' label="Client ID" value={values.clientId} onChange={handleChange} disabled/>
+					<Checkbox name='approved' label="Approved" value={values.approved} checked={values.approved} onChange={handleChangeCheckbox} />
 				</StyledForm>
+				<Flex justify='space-between'>
+					<Button type='submit' form='form'>Save</Button>
+					<PopupConfirm trigger={<Button>Delete</Button>} onClick={() => {dispatch(deleteOfficer(_id)); navigate('../officers')}}> the officer</PopupConfirm>
+					<Button onClick={() => navigate('../officers')}>Back</Button>
+				</Flex>
 			</Block>
 		</StyledWrapper>
 	)

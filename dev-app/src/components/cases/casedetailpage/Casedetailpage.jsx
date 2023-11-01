@@ -111,6 +111,7 @@ const Casedetailpage = () => {
 				<Flex justify='space-between'>
 					<Button type='submit' form='form'>Save</Button>
 					<PopupConfirm trigger={<Button>Delete</Button>} onClick={() => {dispatch(deleteCase(_id)); navigate('../cases')}}> the case</PopupConfirm>
+					<Button onClick={() => navigate('../cases')}>Back</Button>
 				</Flex>
 			</Block>
 		</StyledWrapper>

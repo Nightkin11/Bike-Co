@@ -4,7 +4,7 @@ import Block from '../../Block'
 import { useDispatch, useSelector } from 'react-redux'
 import { Input } from '../../Inputs'
 import { PopupAlert, PopupPassword } from '../../Popup'
-import { toggleOfficer } from '../../../store/officerSlice'
+import { fetchOfficers, toggleOfficer } from '../../../store/officerSlice'
 import Button from '../../Button'
 import Flex from '../../Flex'
 
@@ -50,6 +50,10 @@ const Profilepage = () => {
 	
 	const handleSubmit = () => {
 		dispatch(toggleOfficer(values))
+		.unwrap()
+		.then(setTimeout(() => {
+			dispatch(fetchOfficers())
+		}, 2000))
 	}
 
 	return (
@@ -64,7 +68,7 @@ const Profilepage = () => {
 				<PopupPassword trigger={<Button>Change password</Button>}>
 					{close => (
 						<>
-							<Input name='password' type='password' label="Password" value={values.password} onChange={handleChange} required='required' />
+							<Input name='password' type='password' label="New password" value={values.password} onChange={handleChange} required='required' />
 							<Input name='confirm-password' type='password' label="Confirm Password" value={values.confirmPassword} onChange={validatePasswordChange} required='required' />
 							<Flex justify='space-between'>
 								<Button form='form' onClick={() => {handleSubmit(); close()}}>Save</Button>
