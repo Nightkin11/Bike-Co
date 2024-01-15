@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import Block from '../../Block'
+import Block from '../../../components/Block'
 import { useDispatch, useSelector } from 'react-redux'
-import { Input } from '../../Inputs'
-import { PopupAlert, PopupPassword } from '../../Popup'
+import { Input } from '../../../components/Inputs'
+import { PopupAlert, PopupPassword } from '../../../components/Popup'
 import { fetchOfficers, toggleOfficer } from '../../../store/officerSlice'
-import Button from '../../Button'
-import Flex from '../../Flex'
+import Button from '../../../components/Button'
+import Flex from '../../../components/Flex'
 
 const StyledWrapper = styled.div`
 	display: flex;

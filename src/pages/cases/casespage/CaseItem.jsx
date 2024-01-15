@@ -1,15 +1,15 @@
 import React from 'react'
-import Block from '../../Block'
-import Button from '../../Button'
+import Block from '../../../components/Block'
+import Button from '../../../components/Button'
 import {RiDeleteBinLine, RiEditLine} from 'react-icons/ri'
 import { useDispatch } from 'react-redux';
 import {deleteCase} from '../../../store/caseSlice'
 import styled from 'styled-components'
-import Flex from '../../Flex';
+import Flex from '../../../components/Flex';
 import { LIST_COLORS, LIST_TITLES } from '../../../config';
 import { formatDateTime } from '../../../utils'
 import { Link } from 'react-router-dom';
-import { PopupConfirm } from '../../Popup';
+import { PopupConfirm } from '../../../components/Popup';
 
 
 const StyledInformation = styled.div`

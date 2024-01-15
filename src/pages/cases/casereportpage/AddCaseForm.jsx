@@ -2,10 +2,10 @@ import React, { useRef } from 'react'
 import styled from 'styled-components'
 import {useDispatch, useSelector} from 'react-redux'
 import { useState } from 'react'
-import { Selector, Input } from '../../Inputs'
-import Button from '../../Button'
+import { Selector, Input } from '../../../components/Inputs'
+import Button from '../../../components/Button'
 import { addNewCase, addNewCasePublic } from '../../../store/caseSlice'
-import { PopupAlert } from '../../Popup'
+import { PopupAlert } from '../../../components/Popup'
 
 const StyledForm = styled.form`
 	z-index: 1;

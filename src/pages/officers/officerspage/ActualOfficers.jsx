@@ -1,9 +1,9 @@
 import React from 'react'
 import { useSelector} from 'react-redux'
 import styled from 'styled-components'
-import Block from '../../Block'
-import CaseItem from './CaseItem'
-import { PopupAlert } from '../../Popup'
+import OfficerItem from './OfficerItem'
+import Block from '../../../components/Block'
+import { PopupAlert } from '../../../components/Popup'
 
 
 const StyledGrid = styled.div`
@@ -15,23 +15,22 @@ const StyledGrid = styled.div`
 	grid-gap: 1vw;
 `
 
-const ActualCases = () => {
-	const cases = useSelector(state => state.cases.data);
-	const { status, message } = useSelector(state => state.cases);
-	const officers = useSelector(state => state.officers.data)
+const ActualOfficers = () => {
+	const officers = useSelector(state => state.officers.data);
+	const { status, message } = useSelector(state => state.officers);
 	const token = localStorage.getItem('token')
-	
+
 	return (
 		<>
 			<PopupAlert open={status === 'ERR'}>{message}</PopupAlert>
 			<StyledGrid>
 				{status === 'loading' && <Block>Loading...</Block>}
 				{status === 'logout' && <Block>You have been logout</Block>}
-				{status === 'OK' && cases.length === 0 ? <Block>
-					It's empty here
+				{status === 'OK' && officers.length === 0 ? <Block>
+					It's empty here 
 				</Block> :
-				cases.map((singleCase) => (
-					<CaseItem key={singleCase._id} {...singleCase} officers={officers} />
+				officers.map((officer) => (
+					<OfficerItem key={officer._id} {...officer} />
 				))}
 				{!token && status !== 'logout' && <Block>Please login for access</Block>}
 			</StyledGrid>
@@ -39,6 +38,4 @@ const ActualCases = () => {
 	)
 }
 
-
-
-export default ActualCases
+export default ActualOfficers

@@ -1,15 +1,15 @@
 import React from 'react'
-import { Selector, Input } from '../../Inputs'
-import Button from '../../Button'
+import { Selector, Input } from '../../../components/Inputs'
+import Button from '../../../components/Button'
 import styled from 'styled-components'
 import { useState } from 'react'
-import Block from '../../Block'
+import Block from '../../../components/Block'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { formatDateTime, DateWithTime } from '../../../utils'
-import Flex from '../../Flex'
+import Flex from '../../../components/Flex'
 import { deleteCase, toggleCase } from '../../../store/caseSlice'
 import {useDispatch} from 'react-redux'
-import { PopupConfirm } from '../../Popup'
+import { PopupConfirm } from '../../../components/Popup'
 
 
 const StyledWrapper = styled.div`

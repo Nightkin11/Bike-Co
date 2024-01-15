@@ -1,14 +1,14 @@
 import React from 'react'
-import { Input, Checkbox } from '../../Inputs'
-import Button from '../../Button'
+import { Input, Checkbox } from '../../../components/Inputs'
+import Button from '../../../components/Button'
 import styled from 'styled-components'
 import { useState } from 'react'
-import Block from '../../Block'
+import Block from '../../../components/Block'
 import { useLocation, useNavigate } from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import { deleteOfficer, toggleOfficer } from '../../../store/officerSlice'
-import { PopupConfirm } from '../../Popup'
-import Flex from '../../Flex'
+import { PopupConfirm } from '../../../components/Popup'
+import Flex from '../../../components/Flex'
 
 
 const StyledWrapper = styled.div`

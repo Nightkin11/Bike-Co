@@ -1,22 +1,22 @@
 import React, { useEffect } from "react";
 import { Route, Routes } from 'react-router-dom';
-import Homepage from './components/home/Homepage';
-import Officerspage from './components/officers/officerspage/Officerspage'
-import Reportpage from './components/cases/casereportpage/Reportpage';
-import Contactpage from './components/contacts/Contactpage'
-import Notfoundpage from './components/Notfoundpage'
+import Homepage from './pages/home/Homepage';
+import Officerspage from './pages/officers/officerspage/Officerspage'
+import Reportpage from './pages/cases/casereportpage/Reportpage';
+import Contactpage from './pages/contacts/Contactpage'
+import Notfoundpage from './pages/Notfoundpage'
 import Layout from './components/Layout';
 import styled from 'styled-components';
-import Registrationpage from "./components/users/registrationpage/Registrationpage";
-import Loginpage from "./components/users/loginpage/Loginpage";
-import Casedetailpage from "./components/cases/casedetailpage/Casedetailpage";
-import Casespage from './components/cases/casespage/Casespage'
-import Officerdetailpage from "./components/officers/officerdetailpage/Officerdetailpage"
+import Registrationpage from "./pages/users/registrationpage/Registrationpage";
+import Loginpage from "./pages/users/loginpage/Loginpage";
+import Casedetailpage from "./pages/cases/casedetailpage/Casedetailpage";
+import Casespage from './pages/cases/casespage/Casespage'
+import Officerdetailpage from "./pages/officers/officerdetailpage/Officerdetailpage"
 import { useDispatch } from "react-redux";
 import { fetchCases } from "./store/caseSlice";
 import { fetchAuth } from "./store/userSlice";
 import { fetchOfficers } from "./store/officerSlice";
-import Profilepage from "./components/users/profilepage/Profilepage";
+import Profilepage from "./pages/users/profilepage/Profilepage";
 
 
 const AppWrapper = styled.div`

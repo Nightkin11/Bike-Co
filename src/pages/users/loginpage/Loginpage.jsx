@@ -1,13 +1,13 @@
 import React from 'react'
 import { useState } from 'react'
 import styled from 'styled-components'
-import Button from '../../Button'
-import { Input } from '../../Inputs'
-import Block from '../../Block'
+import Button from '../../../components/Button'
+import { Input } from '../../../components/Inputs'
+import Block from '../../../components/Block'
 import { logoutUser, signIn } from '../../../store/userSlice'
 import {useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { PopupAlert } from '../../Popup'
+import { PopupAlert } from '../../../components/Popup'
 
 
 const StyledWrapper = styled.div`

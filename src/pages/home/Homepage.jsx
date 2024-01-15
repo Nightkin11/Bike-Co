@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import Block from '../Block'
+import Block from '../../components/Block'
 import { useSelector } from 'react-redux'
-import bike from './bike.webp'
+import bike from './bike.webp' 
+
 
 
 const StyledWrapper = styled.div`

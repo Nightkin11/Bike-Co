@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Block from '../Block'
+import Block from '../../components/Block'
 
 const StyledWrapper = styled.div`
 	display: flex;

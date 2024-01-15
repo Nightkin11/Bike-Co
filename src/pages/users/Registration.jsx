@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import Button from '../Button'
+import Button from '../../components/Button'
 import { useWindowSize } from '../../utils'
 import {FiLogIn, FiUserPlus, FiUser } from 'react-icons/fi'
 import { Link } from "react-router-dom";
 import { useSelector } from 'react-redux'
 import useOnclickOutside from "react-cool-onclickoutside";
-import Dropdown from '../Dropdown'
+import Dropdown from '../../components/Dropdown'
 
 const StyledWrapper = styled.div`
 	display: flex;

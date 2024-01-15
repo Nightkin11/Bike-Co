@@ -1,13 +1,13 @@
 import React from 'react'
 import { useState } from 'react'
 import styled from 'styled-components'
-import Block from '../../Block'
-import Button from '../../Button'
-import {Input} from '../../Inputs'
+import Block from '../../../components/Block'
+import Button from '../../../components/Button'
+import {Input} from '../../../components/Inputs'
 import {useDispatch, useSelector} from 'react-redux'
 import { signUp } from '../../../store/userSlice'
 import { useNavigate } from 'react-router-dom'
-import { PopupAlert } from '../../Popup'
+import { PopupAlert } from '../../../components/Popup'
 
 
 const StyledWrapper = styled.div`
@@ -26,7 +26,7 @@ const Registrationpage = () => {
 		firstName: '',
 		lastName: '',
 		password: '',
-		clientId:'',
+		clientId:'c77c6184-c783-4c20-acbc-563bf7384d1f',
 	})
 	const dispatch = useDispatch();
 	const navigate = useNavigate()
@@ -63,7 +63,7 @@ const Registrationpage = () => {
 					<Input label="Confirm Password" name='confirm-password' type='password' value={values.confirmPassword} onChange={validatePasswordChange} required='required' />
 					<Input label='First name' name='firstName' type='text' value={values.firstName} onChange={handleChange} />
 					<Input label='Last name' name='lastName' type='text' value={values.lastName} onChange={handleChange} />
-					<Input label='Client ID' name='clientId' type='text' value={values.clientId} onChange={handleChange} required='required' />
+					<Input label='Client ID' name='clientId' type='text' value={values.clientId} onChange={handleChange} disabled='disabled' required='required' />
 					<Button width='100px' type='submit'>Sign up</Button>
 				</StyledForm>
 			</Block>
